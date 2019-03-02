@@ -4,8 +4,83 @@
 
 {% block title %} | About Us {% endblock %}
 
+{% block css %}
+<style>
+
+/* Image list Card  */
+
+.c {
+  position: relative;
+  border: 0px solid black;
+  background: rgb(0, 0, 0);
+  overflow: hidden;
+ 
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+  -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari */
+  transform: scale(1.1); 
+ 
+  
+  
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  
+}
+
+.c:hover .image {
+  opacity: 0.3;
+  z-index: 00;
+  width: 100%;
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+
+}
+
+.c:hover .middle {
+  opacity: 1;
+}
+.cc{
+  padding: 10px;
+  color: white;
+}
+
+.product-new-label{
+  color:#fff;
+  background-color:rgba(255, 0, 0, 0.78);
+  font-size:13px;
+  font-weight:800;
+  line-height:35px;
+  height:35px;
+  width: 80px;
+  position:absolute;
+  left:8px;
+  text-align: center;
+  top:8px;
+  transition:all .3s
+}
+
+</style>
+{% endblock %}
+
 {% block content %}
-<section id="showcase-inner" class="py-5 text-white">
+<section id="fact22" class="py-5 text-white">
     <div class="container">
       <div class="row text-center">
         <div class="col-md-12">
@@ -62,13 +137,47 @@
   </section>
 
   <!-- Work -->
-  <section id="work" class="bg-dark text-white text-center">
+  <section id="work" class="bg-dark text-white text-center" >
     <h2 class="display-4">We Work For You</h2>
     <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem velit aperiam, unde aliquid at similique!</h4>
     <hr>
-    <a href="listings.html" class="btn btn-secondary text-white btn-lg">View Our Featured Listings</a>
+    <a href="{% url 'listings' %}" class="btn btn-secondary text-white btn-lg">View Our Featured Listings</a>
   </section>
 
+ <section id="team" class="py-5" style="margin-bottom: 30px;">
+    <div class="container" style="margin-bottom: 30px;">
+      <h2 class="text-center">Our Team</h2>
+<div class="row">
+ {% if realtors %}
+          {% for realtor in realtors %}
+  <div class="col-sm-4">
+    <div class="card c " style="margin-top: 10px;">
+    <a href="">
+     <img class="card-img-top image rounded-circle mb-2" src="{% if realtor.photo.url  %}{{ realtor.photo.url }} {% else %}http://www.markweb.in/primehouseware/images/noimage.png {% endif %}" alt="{{ post.cname }}" >
+     <span class="product-new-label">AGENT</span>
+      <div class="middle">
+        <p class="cc" style="margin-bottom: 80px;"><i class="fas fa-envelope-open"></i>  {{ realtor.email }}</p>
+        <p class="cc"><i class="fas fa-user"></i>  {{ realtor.name }}</p>
+        <p class="text-success" style="margin-top: -30px;"><i class="fas fa-award text-success mb-3"></i> Realtor</p>
+             
+        <p class="cc" style="margin-top: 80px;"><i class="fas fa-phone"></i>  {{ realtor.phone }}</p>
+      </div></a>
+    </div>
+  </div>
+
+{% endfor %}
+{% else %}
+<div class="col-md-12">
+  <p>No Realtors Available</p>
+</div>
+{% endif %}  
+
+</div >
+</div >
+
+
+{% comment %} 
+</section>
   <!-- Team -->
   <section id="team" class="py-5">
     <div class="container">
@@ -95,5 +204,7 @@
         {% endif %}       
       </div>
     </div>
-  </section>
+  </section> {% endcomment %}
+
+
 {% endblock %}

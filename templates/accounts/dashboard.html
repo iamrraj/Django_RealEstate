@@ -3,12 +3,12 @@
 {% block title %} | User Dashboard {% endblock %}
 
 {% block content %}
-<section id="showcase-inner" class="py-5 text-white">
+<section id="fact1" class="py-5 text-white">
     <div class="container">
       <div class="row text-center">
         <div class="col-md-12">
           <h1 class="display-4">User Dashboard</h1>
-          <p class="lead">Manage your BT Real Estate account</p>
+          <p class="lead">Manage Your Real Estate account</p>
         </div>
       </div>
     </div>
@@ -36,7 +36,20 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h2>Welcome {{ user.first_name }}</h2>
+
+          <h2>Welcome {{ user.first_name }}
+            <span> 
+            <!-- Button trigger modal -->
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-eye"></i>  View Profile 
+              </button>
+            <!-- Button trigger modal End -->
+            </span>
+            <span style="float: right">
+               <a class="btn btn-danger" href="{% url 'password' %}"><i class="fa fa-key"></i>  Change PassWord</a>
+            </span>
+          </h2>
+
           {% if contacts %}
             <p>Here are the property listings that you have inquired about</p>
             <table class="table">
@@ -66,4 +79,41 @@
       </div>
     </div>
   </section>
+
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel"> Welcome : {{ user.get_full_name }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+
+            <div class="col">
+            <h3 class='text-primary'><i class="fa fa-user"></i>  Name:  {{ user.get_full_name }}</h3>
+                <small class="faded lead">
+                    <strong class='text-success' ><i class="fa fa-users"></i>  UserName:   {{ user.username }} </strong>
+                </small>  
+
+            <hr/>
+                
+                <div class="i"><span class="sm-label label text-primary"><i class="fa fa-envelope"></i></span>  Email:   {{ user.email }}</div>
+                <div class="i"><span class="sm-label label text-primary"><i class="fa fa-map-marker"></i></span>  Address:  Address</div>
+                <div class="i"><span class="sm-label label text-primary"><i class="fa fa-envelope"></i></span>  Phone : Phone </div>
+                </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"> <i class="fa fa-times"></i>  Close</button>
+        <button type="button" class="btn btn-primary"><i class="fa fa-pen"> </i>  Edit </button>
+      </div>
+    </div>
+  </div>
+</div>
   {% endblock %}

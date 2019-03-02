@@ -4,16 +4,67 @@
 
 {% block title %} | Welcome {% endblock %}
 
+{% block js %}
+
+<script language="javascript" type="text/javascript">
+$(window).load(function()
+{
+    $('#myModal').modal('show');
+});
+</script>
+
+{% endblock %}
+  
 {% block content %}
+
+<!-- Modal -->
+
+
+<div class="modal fade bd-example-modal-lg" id="myModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered "><!-- modal-lg  "For Make Largee Model-->
+    
+      <!-- Modal content-->
+      <div class="modal-content " id="fact11">
+        <div class="modal-header">
+          <h3 class="modal-title text-success"> Welcome To Raj Housing  </h3>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
+        </div>
+        <div class="modal-body">
+          <h4 class="text-white text-center">We Give Best Quality and Service </h4>
+          <p class="bg-success" style="padding:10px; border-radius: 3px ">If You Have Any Query About House You Can Contact Us :</p>
+          <h5><i class="fa fa-envelope text-success"></i> <a href="mailto:rajr97555@gmail.com" class="text-white" style="text-decoration: none;">&nbsp;&nbsp;    rajr97555@gmail.com</a></h5>
+          <h5 style="margin-top: 20px;"><i class="fa fa-phone text-success"></i>  <a href="tel:+48722750618" class="text-white" style="text-decoration: none;">&nbsp;&nbsp;    +48722750618</a></h5>
+          <br><h4 class="text-success"> Please Subscribe Us To Get Latest Offer </h4>
+          {% comment %} <form action="" method="POST"> {% endcomment %}
+            <div class="form-group">
+              <input class="form-control" type="text" placeholder="Enter Email : raj@gmail.com" />
+            </div>
+
+            <div class="form-group text-right">
+              <button class="btn btn-success " data-dismiss="modal"><i class="fa fa-arrow-right"></i>   Subscribe Us </button>
+            </div>
+          {% comment %} </form> {% endcomment %}
+        </div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-danger text-white close" data-dismiss="modal" style="padding:10px;"> <i class="fa fa-times"></i>  Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+
 <!-- Showcase -->
-<section id="showcase">
+<section id="fact1">
     <div class="container text-center">
       <div class="home-search p-5">
         <div class="overlay p-5">
-          <h1 class="display-4 mb-4">
+          <h1 class="display-4 mb-4 text-white">
             Property Searching Just Got So Easy
           </h1>
-          <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quas, asperiores eveniet vel nostrum magnam
+          <p class="lead text-white">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quas, asperiores eveniet vel nostrum magnam
             voluptatum tempore! Consectetur, id commodi!</p>
           <div class="search">
             <form action="{% url 'search' %}">
@@ -66,6 +117,7 @@
       </div>
     </div>
   </section>
+   </div>
 <br>
   <!-- Alerts -->
   {% include 'partials/_alerts.html' %}
@@ -80,42 +132,42 @@
             <!-- Listing 1 -->
             <div class="col-md-6 col-lg-4 mb-4">
               <div class="card listing-preview">
-                <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="">
+                <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="" style="height: 250px;">
                 <div class="card-img-overlay">
                   <h2>
-                    <span class="badge badge-secondary text-white">${{ listing.price | intcomma }}</span>
+                    <span class="badge badge-primary text-white">${{ listing.price | intcomma }}</span>
                   </h2>
                 </div>
                 <div class="card-body">
                   <div class="listing-heading text-center">
                     <h4 class="text-primary">{{ listing.title }}</h4>
                     <p>
-                      <i class="fas fa-map-marker text-secondary"></i> {{ listing.city }} {{ listing.state }}, {{ listing.zipcode }}</p>
+                      <i class="fas fa-map-marker text-info"></i> {{ listing.city }} {{ listing.state }}, {{ listing.zipcode }}</p>
                   </div>
                   <hr>
-                  <div class="row py-2 text-secondary">
+                  <div class="row py-2 text-info">
                     <div class="col-6">
                       <i class="fas fa-th-large"></i> Sqft: {{ listing.sqft }}</div>
                     <div class="col-6">
                       <i class="fas fa-car"></i> Garage: {{ listing.garage }}</div>
                   </div>
-                  <div class="row py-2 text-secondary">
+                  <div class="row py-2 text-info">
                     <div class="col-6">
                       <i class="fas fa-bed"></i> Bedrooms: {{ listing.bedrooms }}</div>
                     <div class="col-6">
                       <i class="fas fa-bath"></i> Bathrooms: {{ listing.bathrooms }}</div>
                   </div>
                   <hr>
-                  <div class="row py-2 text-secondary">
-                    <div class="col-6">
-                      <i class="fas fa-user"></i> {{ listing.realtor }}</div>
+                  <div class="row py-2 text-dark">
+                    <div class="col-12">
+                      <i class="fas fa-user"></i> Agent: {{ listing.realtor }}</div>
                   </div>
-                  <div class="row text-secondary pb-2">
-                    <div class="col-6">
-                      <i class="fas fa-clock"></i> {{ listing.list_date | timesince }}</div>
+                  <div class="row text-danger pb-2">
+                    <div class="col-12">
+                      <i class="fas fa-clock"></i> Pub Time:  {{ listing.list_date | timesince }} ago</div>
                   </div>
                   <hr>
-                  <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
+                  <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block"><i class="fas fa-eye"></i>  More Info</a>
                 </div>
               </div>
             </div>
@@ -130,7 +182,7 @@
     </div>
   </section>
 
-  <section id="services" class="py-5 bg-secondary text-white">
+  <section id="fact2" class="py-5 bg-secondary text-white">
     <div class="container">
       <div class="row text-center">
         <div class="col-md-4">

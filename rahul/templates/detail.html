@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ user.profile.first_name }} {{ user.profile.last_name }}
+{% endblock %}
+
+{% block css %}
+   
+{% endblock %}
+
+
+{% block body %}
+
+
+<div style="margin: 0 auto; width: 600px; bg-white" style="margin-top: 96px;"> 
+<div class = 'container bg-white' style="margin-top: 100px; margin-bottom: 70px; border: 2px solid black; padding: 20px; border-radius: 6px; box-shadow: 3px 3px 3px black; " >
+<div class="row">
+<div class =" col-md-12">
+  <h2>Welcome, {{ user.profile.first_name }} {{ user.profile.last_name }}<br> </h2><br>
+</div>
+
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="no-shade card-box">
+                <div class="row">
+                    <div class="col-md-4 col-xs-12 text-center">
+                        <div class="thumb img-round">
+                            <img src="{% if user.profile.picture.url%}{{ user.profile.picture.url }} {% else %}no-img.png {% endif %}" style="width:150px; height:150px; border-radius: 50%; border: 4px solid green; padding: 5px;" />
+                        </div>
+                     
+                    </div>
+                    <div class="col-md-8 col-xs-12">
+                        <h3>{{ user.profile.first_name }} {{ user.profile.last_name }}</h3>
+                        <small class="faded lead">
+                           <strong> {{ user.username }} </strong>
+                        </small>
+                        <hr/>
+                       
+                        <div><span class="sm-label label text-primary"><i class="fa fa-phone"></i></span>  {{ user.profile.phone}}</div><br/>
+                        <div><span class="sm-label label text-primary"><i class="fa fa-map-marker"></i></span> {{ user.profile.city }}, {{ user.profile.country }}</div><br/>
+                        <div><span class="sm-label label text-primary"><i class="fa fa-envelope"></i></span> {{ user.profile.email }}</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="empty-box text-left">
+                <a class="btn btn-danger" href="#">Edit Profile</a>
+               <button type="button" class="float-right btn btn-success" data-toggle="modal" data-target="#exampleModal">View Profile</button>
+            </div>
+           
+        </div>
+       
+    </div>
+</div>
+</div>
+       
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Welcome : {{ user.profile.first_name }} {{ user.profile.last_name }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class = "row ">
+     
+        <div class="col">
+            <img src="{% if user.profile.picture.url%}{{ user.profile.picture.url }} {% else %}no-img.png {% endif %}" style="width:200px; height:200px; border-radius: 8px; " />
+        </div>
+
+        <div class="col">
+            <h3 class='text-primary'><i class="fa fa-user"></i>  {{ user.profile.first_name }} {{ user.profile.last_name }}</h3>
+                <small class="faded lead">
+                    <strong class='text-success'><i class="fa fa-users"></i>  {{ user.username }} </strong>
+                </small>  
+
+            <hr/>
+                
+                <div><span class="sm-label label text-primary"><i class="fa fa-phone"></i></span>  {{ user.profile.phone}}</div><br>
+                <div><span class="sm-label label text-primary"><i class="fa fa-map-marker"></i></span> {{ user.profile.city }}, {{ user.profile.country }}</div><br>
+                <div><span class="sm-label label text-primary"><i class="fa fa-envelope"></i></span> {{ user.profile.email }}</div>
+        </div>
+    </div>
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    
+
+        
+
+     
+
+
+{% endblock %}

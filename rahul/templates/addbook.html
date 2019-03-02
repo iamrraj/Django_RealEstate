@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    
+{% endblock %}
+
+{% block css %}
+   
+{% endblock %}
+
+
+{% block body %}
+<div class="container" style="margin: 0 auto; width: 600px; margin-bottom: 70px;
+ margin-top: 100px; border: 2px solid black; padding: 20px;
+ box-shadow: 3px 3px 3px 3px black; border-radius: 7px;" >
+    <h1 class="text-center">New Book</h1>
+    {% comment %} <form action="" method="POST" enctype='multipart/form-data'>{% csrf_token %}
+      {{ form|crispy }}
+     <button class="btn btn-success btn-lg"> Save </button>
+    </form> {% endcomment %}
+    
+    <form method="post">
+    {% csrf_token %}
+
+    <div class = "row col-md-12"  >
+      <div class="col">
+        {{ form.categoty|as_crispy_field }}
+      </div>
+       <div class="col">
+        {{ form.name|as_crispy_field }}
+      </div>
+    </div>
+
+
+
+    <div class = "row col-md-12"  >
+      <div class="col-md-6">
+        {% comment %} {{ form.image|as_crispy_field }} {% endcomment %}
+        <label for="lastName">Image </label>
+        <input id="image" name="image" class="form-control "  value="" type="file" autocomplete="off" required>
+      </div>
+
+     <div class="col-md-6">
+        {% comment %} {{ form.file|as_crispy_field }} {% endcomment %}
+        <label for="lastName">Image </label>
+        <input id="file" name="file" class="form-control"  value="" type="file" autocomplete="off" required>
+      </div>
+    </div>
+
+
+
+    <div class = "row col-md-12"   >
+      <div class="col">
+        {% comment %} {{ form.description|as_crispy_field }} {% endcomment %}
+        <label for="description">Description</label>
+        <input id="address" name="description" placeholder="Description" class="form-control" type="text"  value="" autocomplete="off" required>
+      </div>
+    </div>
+
+    <div class = "row col-md-12" style="margin-top: 10px;"  >
+    <div class="col">
+        {% comment %} {{ form.specification|as_crispy_field }} {% endcomment %}
+        <label for="specification">Specification</label>
+         <input id="address" name="specification" placeholder="Specification" class="form-control" type="text"  value="" autocomplete="off" required>
+      </div>
+      </div>
+
+    
+    
+     <div class = "row col-md-12" >
+      <div class="col">
+        {{ form.seller|as_crispy_field }}
+      </div>
+    
+      <div class="col" style="margin-top: 10px;">
+        {% comment %} {{ form.pub_date|as_crispy_field }} {% endcomment %}
+        <label for="specification">Date/Time</label>
+         <input id="address" name="pub_date" placeholder="Specification" class="form-control" type="date"  value="" autocomplete="off" required>
+      </div>
+    </div>
+    <div class="col" >
+        {{ form.available|as_crispy_field }}
+      </div>
+    
+    <button type="submit" class="btn btn-primary btn-lg" style="box-shadow: 3px 3px 3px 3px black;">Add New Book</button>
+  </form>
+
+    
+    </div>
+{% endblock %}

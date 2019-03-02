@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Admin Login 
+{% endblock %}
+
+{% block css %}
+   
+{% endblock %}
+
+{% block content%}
+
+<div class="container" style="margin: 0 auto; width: 550px;  border-radius: 5px; margin-top: 150px; margin-bottom: 70px;">
+
+
+<div class="col-md-12 " >
+	    <div class="card " style="border: 2px solid black; box-shadow: 3px 3px 2px 3px  black;">
+	        <div class="card-body ">
+	              <div class="row">
+		<div class="col-md-12">
+		     <h3 class="text-center" style="margin-bottom: 30px;"> Admin Login Page</h3>
+      <div class="row">
+        {% comment %} <div class="col-sm-4 col-md-4" style="paddind: 10px;">
+          <a href="{% url 'social:begin' 'facebook' %}" class="btn btn-lg btn-primary btn-block" style="width: 115px" >Facebook</a>
+        </div>
+        <div class=" col-sm-4 col-md-4">
+          <a href="{% url 'social:begin' 'github' %}" class="btn btn-lg btn-dark btn-block" style="width: 115px">Github</a>
+        </div>
+        {% comment %} <div class=" col-sm-4 col-md-4 disabled">
+          <a href="{% url 'social:begin' 'twitter' %}" class="btn btn-lg btn-info btn-block disabled" style="width: 115px">Twitter</a>
+        </div> {% endcomment %}
+        {% comment %} <div class=" col-sm-4 col-md-4 ">
+          <a href="{% url 'social:begin' 'linkedin' %}" class="btn btn-lg btn-info btn-block " style="width: 115px">Linkedln</a>
+        </div> {% endcomment %}
+
+      </div>
+     
+      
+        <hr class="hr-or">
+        
+       <p class="text-center"><strong>-- OR --</strong></p>
+
+  
+  {% if form.errors %}
+    <p style="color: red">Your username and password didn't match. Please try again.</p>
+  {% endif %}
+  <form method="POST" >
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}" />
+    {% comment %} {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}<br>
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+        {% if field.help_text %}
+          <p><small style="color: grey">{{ field.help_text }}</small></p>
+        {% endif %}
+      </p>
+    {% endfor %} {% endcomment %}
+    <div class="form-group">
+        <div class="input-group">
+            {% comment %} <span class="input-group-addon"><i class="fa fa-envelope"></i></span> {% endcomment %}
+        <input type="text" class="form-control lg" name="username" placeholder="Company UserName" style="height: 40px;" >
+    </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group lg">
+            
+        <input type="password" class="form-control lg" name="password" placeholder="Password" style="height: 40px;" >
+    </div>
+    </div>
+            
+
+  
+    <button type="submit" class="btn btn-primary btn-lg" style="width: 150px;">Log in</button>
+    <div class="text-right">
+    <div>
+   <a href="{% url 'rahul:register' %}" style="font-size: 17px;">New to My Site? Sign up</a><br>
+ </div>
+    
+
+
+    
+
+    
+      {% comment %} <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
+      <a href="{% url 'social:begin' 'twitter' %}">Login with Twitter</a><br> 
+      <a href="{% url 'social:begin' 'linkedin' %}">Login with Linkedin</a><br>
+       <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a> {% endcomment %}
+    </div>
+  </form>
+ 
+ </div>
+  </div>
+   </div>
+    </div> </div> </div> 
+
+{% endblock %}

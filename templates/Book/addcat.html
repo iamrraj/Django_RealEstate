@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Add Category
+{% endblock %}
+
+{% block css %}
+   
+{% endblock %}
+
+
+{% block content %}
+<div class="container" style="margin: 0 auto; width: 600px; margin-bottom: 70px;
+ margin-top: 50px; border: 2px solid black; padding: 20px;
+ box-shadow: 3px 3px 3px 3px black; border-radius: 7px;" >
+    <h1 class="text-center text-primary">New Language Programme</h1>
+    {% comment %} <form action="" method="POST" enctype='multipart/form-data'>{% csrf_token %}
+      {{ form|crispy }}
+     <button class="btn btn-success btn-lg"> Save </button>
+    </form> {% endcomment %}
+    
+    <form method="post">
+    {% csrf_token %}
+
+
+
+
+    <div class = "row col-md-12" style="margin-bottom: 30px; margin-top: 30px;"  >
+      <div class="col">
+        {% comment %} {{ form.description|as_crispy_field }} {% endcomment %}
+        <label for="description">Programming Language</label>
+        <input id="address" name="name" placeholder="Programming Name" class="form-control" type="text"  value="" autocomplete="off" required>
+      </div>
+    </div>
+    
+    <button type="submit" class="btn btn-primary btn-lg" style="box-shadow: 3px 3px 3px 3px black;">Add New Book</button>
+  </form>
+
+    
+    </div>
+
+    
+    </div>
+{% endblock %}
