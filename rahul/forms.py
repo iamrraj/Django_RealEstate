@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Profile, Categoty, Product, Slide
-from tinymce import TinyMCE
+
 
 
 class SignUpForm( UserCreationForm ):
@@ -32,23 +32,9 @@ class UpdateProfile(forms.ModelForm):
         self.fields['city'].widget.attrs.update({'class': 'form-control', 'placeholder': 'City'})
         self.fields['phone'].widget.attrs.update({'class': 'form-control', 'placeholder': 'Phone'})
 
-class TinyMCEWidget(TinyMCE):
-    def use_required_attribute(self, *args):
-        return False
-
 
 class BookForm(forms.ModelForm):
-    description = forms.CharField(
-        widget=TinyMCEWidget(
-            attrs={'required': False, 'cols': 30, 'rows': 10}
-        )
-    )
-
-    specification= forms.CharField(
-        widget=TinyMCEWidget(
-            attrs={'required': False, 'cols': 15, 'rows': 10}
-        )
-    )
+   
     class Meta:
         model: Product
         fields = ['categoty', 'name', 'image','image1','description','specification','seller','pub_date','available',]

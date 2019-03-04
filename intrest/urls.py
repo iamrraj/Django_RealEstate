@@ -25,5 +25,7 @@ urlpatterns = [
     path('contacts/', include('contacts.urls')),
     path('', include('rahul.urls')),
     path('admin/', admin.site.urls),
-     path('tinymce/', include('tinymce.urls')),
+    path('tinymce/', include('tinymce.urls')),
+    path('api/', include("listings.api.urls")),
+    path('api/', include("realtors.api.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

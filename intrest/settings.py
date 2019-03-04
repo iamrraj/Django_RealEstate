@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'markdown_deux',
     'crispy_forms',
     'tinymce',
+    'rest_framework',
+    'corsheaders',
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -58,7 +60,20 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000',
+)
+
+REST_FRAMEWORK = {
+    
+    'DEFAULT_AUTHENTICATION_CLASSES': [],
+    'DEFAULT_PERMISSION_CLASSES': [],
+}
 
 ROOT_URLCONF = 'intrest.urls'
 

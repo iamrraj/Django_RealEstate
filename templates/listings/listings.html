@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-  </section>
+</section>
 
   <!-- Breadcrumb -->
   <section id="bc" class="mt-3">
@@ -42,7 +42,9 @@
                 <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="" style="height: 250px;">
                 <div class="card-img-overlay">
                   <h2>
-                    <span class="badge badge-secondary text-white">${{ listing.price | intcomma }}</span>
+                  <span class="badge badge-primary text-white"><i class="fa fa-money" aria-hidden="true"></i>
+                  ${{ listing.price | intcomma }}
+                  </span>
                   </h2>
                 </div>
                 <div class="card-body">
@@ -74,7 +76,7 @@
                       <i class="fas fa-clock"></i> Pub Time:  {{ listing.list_date | timesince }} Ago</div>
                   </div>
                   <hr>
-                  <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
+                  <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block"><i class="fas fa-eye"></i>  More Info</a>
                 </div>
               </div>
             </div>
